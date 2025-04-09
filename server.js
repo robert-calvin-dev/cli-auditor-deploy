@@ -16,7 +16,7 @@ app.post('/run-audit', (req, res) => {
     return res.status(400).send('❌ Invalid URL format.');
   }
 
-  const cliPath = path.join(__dirname, '..', 'seo_auditor_tool');
+  const cliPath = path.join(__dirname, 'seo_auditor_tool');
   const cliFile = path.join(cliPath, 'seo_auditor', 'cli.py');
   const outputDir = path.join(cliPath, 'reports');
 
@@ -55,7 +55,7 @@ app.post('/run-audit', (req, res) => {
 });
 
 app.get('/download/:file', (req, res) => {
-  const filePath = path.join(__dirname, '..', 'seo_auditor_tool', 'reports', req.params.file);
+  const filePath = path.join(__dirname, 'seo_auditor_tool', 'reports', req.params.file);
   if (!fs.existsSync(filePath)) return res.status(404).send('❌ File not found.');
   res.download(filePath);
 });
